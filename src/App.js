@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import "./css/app.css";
+import { navigate, Router } from "@reach/router";
+import Login from "./Login";
+import Home from "./Home";
+import NoRouteFound from "./NoRouteFound";
+import { getTokenFromUrl } from "./spotify";
+import SpotifyWebApi from "spotify-web-api-js";
 
-function App() {
+// this object represents spotify in our app
+const spotify = new SpotifyWebApi();
+
+const App = () => {
+  const [token, setToken] = useState();
+
+  useEffect(() => {
+    const hash = getTokenFromUrl();
+    // eslint-disable-next-line
+    console.log("object from url", hash);
+    const _token = hash.access_token;
+
+    if (_token) {
+      window.location.hash = "";
+      setToken(_token);
+      spotify.setAccessToken(_token);
+      navigate("/home");
+    }
+
+    // eslint-disable-next-line
+    console.log("token", token);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Router>
+        <Login path="/" />
+        <Home path="/home" />
+        <NoRouteFound default />
+      </Router>
     </div>
   );
-}
+};
 
 export default App;

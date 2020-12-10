@@ -1,0 +1,57 @@
+.login-page {
+  width: 100%;
+  min-height: 100vh;
+  color: #222326;
+  background-color: #2d46b9;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: start;
+  background-image: url("https://www.scdn.co/i/projectRamses/LiE_circles.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.spotify-logo {
+  max-width: 20rem;
+  height: auto;
+  margin: auto 4rem;
+}
+
+.login-btn {
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 6.18rem;
+  padding: 1.25rem;
+  margin: auto 4rem;
+}
+
+.main-heading,
+.secondary-heading {
+  color: #1ed760;
+  margin: auto 4rem;
+  max-width: 32rem;
+}
+
+.main-heading {
+  font-size: 4rem;
+  line-height: 4rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.secondary-heading {
+  font-size: 1.125rem;
+  font-weight: 400;
+}
+
+@media only screen and (max-width: 768px) {
+  .spotify-logo,
+  .login-btn,
+  .main-heading,
+  .secondary-heading {
+    margin: auto 1.5rem;
+  }
+}
