@@ -17,15 +17,23 @@ function FooterPlayer({ spotify }) {
         context_uri: playlist_main.uri,
       })
       .then((response) => {
+        // eslint-disable-next-line
         console.log(response);
         dispatch({
           type: "PLAY_PAUSE",
         });
+      })
+      .catch((err) => {
+        dispatch({
+          type: "SET_ERROR",
+        });
+        console.log(err);
       });
   };
 
   const pausePlaylist = () => {
     spotify.pause().then((response) => {
+      // eslint-disable-next-line
       console.log(response);
       dispatch({
         type: "PLAY_PAUSE",

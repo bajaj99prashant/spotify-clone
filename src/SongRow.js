@@ -8,7 +8,7 @@ import "./css/songRow.css";
 import { useStateValue } from "./DataLayer";
 
 function SongRow({ playlist_main, spotify }) {
-  const [{ playing, track_uris }, dispatch] = useStateValue();
+  const [{ playing, track_uris, error }, dispatch] = useStateValue();
 
   const playPlaylist = () => {
     spotify
@@ -19,6 +19,12 @@ function SongRow({ playlist_main, spotify }) {
         console.log(response);
         dispatch({
           type: "PLAY_PAUSE",
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        dispatch({
+          type: "SET_ERROR",
         });
       });
   };
@@ -51,6 +57,12 @@ function SongRow({ playlist_main, spotify }) {
           });
         });
     }
+  };
+
+  const dispatchError = () => {
+    dispatch({
+      type: "SET_ERROR",
+    });
   };
   return (
     <div className="song-row">
@@ -97,6 +109,16 @@ function SongRow({ playlist_main, spotify }) {
           <FavoriteIcon className="playlist-icon" />
           <MoreHorizIcon className="playlist-icon horizontal" />
         </div>
+
+        {error ? (
+          <h1 className="error-heading">
+            There was an error playing songs, or this feature is only for
+            premium users
+            <button onClick={dispatchError}>X</button>
+          </h1>
+        ) : (
+          <h1 className="error-heading">Enjoy the music!</h1>
+        )}
 
         <div className="song-row-wrapper">
           {playlist_main?.tracks?.items?.map((item, index) => (

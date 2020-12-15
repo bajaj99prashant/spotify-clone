@@ -5,6 +5,7 @@ export const initialState = {
   playing: false,
   item: null,
   track_uris: [],
+  error: false,
 };
 
 const reducer = (state, action) => {
@@ -51,6 +52,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         track_uris: [...state.track_uris, action.uri],
+      };
+    case "SET_ERROR":
+      return {
+        ...state,
+        error: !state.error,
       };
     default:
       return state;
