@@ -1,0 +1,9 @@
+.player-body-fall {
+  margin: auto 1rem;
+}
+
+.player-body-fall > h1 {
+  font-size: 5rem;
+  line-height: 6rem;
+  color: #fff;
+}

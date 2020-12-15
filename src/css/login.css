@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: start;
+  justify-content: flex-start;
   background-image: url("https://www.scdn.co/i/projectRamses/LiE_circles.svg");
   background-repeat: no-repeat;
   background-size: cover;

@@ -1,40 +1,64 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import "./css/app.css";
 import { navigate, Router } from "@reach/router";
 import Login from "./Login";
-import Home from "./Home";
+import Player from "./Player";
 import NoRouteFound from "./NoRouteFound";
 import { getTokenFromUrl } from "./spotify";
 import SpotifyWebApi from "spotify-web-api-js";
+import { useStateValue } from "./DataLayer";
 
 // this object represents spotify in our app
 const spotify = new SpotifyWebApi();
 
 const App = () => {
-  const [token, setToken] = useState();
+  // eslint-disable-next-line
+  const [{ token, playlists, discover_weekly }, dispatch] = useStateValue();
 
   useEffect(() => {
     const hash = getTokenFromUrl();
-    // eslint-disable-next-line
-    console.log("object from url", hash);
     const _token = hash.access_token;
-
     if (_token) {
       window.location.hash = "";
-      setToken(_token);
+      // dispatching an action
+      dispatch({
+        type: "SET_TOKEN",
+        token: _token,
+      });
       spotify.setAccessToken(_token);
-      navigate("/home");
-    }
 
-    // eslint-disable-next-line
-    console.log("token", token);
+      spotify.getMe().then((user) => {
+        dispatch({
+          type: "SET_USER",
+          user,
+        });
+      });
+
+      spotify.getUserPlaylists().then((playlists) => {
+        dispatch({
+          type: "SET_PLAYLISTS",
+          playlists,
+        });
+      });
+
+      // spotify.getPlaylist("37i9dQZF1DWVNxbAc9fvM9").then((playlist) => {
+      //   dispatch({
+      //     type: "SET_DISCOVER_WEEKLY",
+      //     discover_weekly: playlist,
+      //   });
+      // });
+    }
   }, []);
+
+  if (token) {
+    navigate("/player");
+  }
 
   return (
     <div>
       <Router>
         <Login path="/" />
-        <Home path="/home" />
+        <Player path="/player" spotify={spotify} />
         <NoRouteFound default />
       </Router>
     </div>

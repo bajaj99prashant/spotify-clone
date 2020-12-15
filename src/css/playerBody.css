@@ -1,0 +1,16 @@
+.player-body {
+  width: 80%;
+  height: 100vh;
+  background: linear-gradient(#181930, rgba(0, 0, 0, 0.9));
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.player-body::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+.player-body::-webkit-scrollbar-thumb {
+  background: transparent;
+}

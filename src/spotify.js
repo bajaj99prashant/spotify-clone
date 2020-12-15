@@ -9,6 +9,7 @@ const scopes = [
   "user-read-playback-state",
   "user-top-read",
   "user-modify-playback-state",
+  "user-library-read",
 ];
 
 // to get excess token from url after login is complete

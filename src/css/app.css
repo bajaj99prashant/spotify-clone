@@ -9,6 +9,15 @@
   src: url("../assets/font/CircularSpotifyTxT-Black.ttf");
 }
 
+html::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
 h1,
 h2,
 h3,

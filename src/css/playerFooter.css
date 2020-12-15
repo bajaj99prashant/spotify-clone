@@ -1,0 +1,11 @@
+.player-footer {
+  width: 100%;
+  background-color: #181818;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+  position: fixed;
+  bottom: 0;
+}

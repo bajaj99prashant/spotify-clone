@@ -1,0 +1,23 @@
+.sidebar-option {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.015em;
+  font-weight: 400;
+  cursor: pointer;
+  padding: 0 1rem;
+  height: 40px;
+  margin: 0.2rem 1rem;
+  transition: 200ms color ease-in;
+}
+
+.sidebar-option:hover {
+  color: #fff;
+  /* background-color: #282828; */
+  border-radius: 4px;
+}
+
+.sidebar-option-icon {
+  margin-right: 1rem;
+}

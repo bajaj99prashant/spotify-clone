@@ -1,0 +1,51 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80vw;
+  padding: 1rem 2rem;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  padding: 0.4rem;
+}
+
+.options {
+  display: flex;
+  align-items: center;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  background: #040404;
+  padding: 0.2rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 200ms background ease-in;
+}
+
+.header-right:hover {
+  background: #282828;
+}
+
+.header-right > h4 {
+  margin: auto 4px;
+}
+
+.logout {
+  margin-left: 1rem;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: transparent;
+  color: #b3b3b3;
+  font-size: 16px;
+  transition: 200ms color ease-in;
+}
+
+.logout:hover {
+  color: #fff;
+}

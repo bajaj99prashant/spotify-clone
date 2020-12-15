@@ -1,0 +1,26 @@
+.sidebar {
+  width: 20%;
+  min-width: 230px;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  color: #b3b3b3;
+}
+
+.sidebar-logo {
+  max-width: 130px;
+  margin: 2rem;
+}
+
+.playlist-heading {
+  margin: 2rem 2rem auto 2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.sidebar > hr {
+  border: 1px solid #282828;
+  width: 90%;
+  margin: 10px auto;
+}
